@@ -98,6 +98,66 @@ const hotelRoom = {
       initialValue: 'basic',
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'specialNote',
+      title: 'Special Note',
+      type: 'text',
+      validation: (Rule) => Rule.required(),
+      initialValue:
+        'Check-in time is 12:00 PM, checkout time is 11:59 AM. If you leave behind any items, please contact the receptionist.',
+    }),
+    defineField({
+      name: 'dimension',
+      title: 'Dimension',
+      type: 'string',
+    }),
+    defineField({
+      name: 'numberOfBeds',
+      title: 'Number Of Beds',
+      type: 'number',
+      initialValue: 1,
+      validation: (Rule) => Rule.required().min(1),
+    }),
+    defineField({
+      name: 'offeredAmenities',
+      title: 'Offered Amenities',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'icon',
+              title: 'Icon',
+              type: 'string',
+            },
+            {
+              name: 'amenity',
+              title: 'Amenity',
+              type: 'string',
+            },
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'isBooked',
+      title: 'Is Booked',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'isFeatured',
+      title: 'Is Featured',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'reviews',
+      title: 'Reviews',
+      type: 'array',
+      of: [{ type: 'review' }],
+    }),
   ],
 };
 

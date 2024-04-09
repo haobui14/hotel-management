@@ -27,9 +27,9 @@ const Auth = () => {
     try {
       console.log(formData);
     } catch (error) {
-
+      console.log(error);
     } finally {
-
+      setFormData(defaultFormData);
     }
   };
 

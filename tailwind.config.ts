@@ -18,7 +18,9 @@ const config: Config = {
           light: '#F2C641',
         },
       },
-      fontFamily: {},
+      fontFamily: {
+        poppins: ['var(--font-poppins)', ...fontFamily.sans],
+      },
     },
   },
   plugins: [],

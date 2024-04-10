@@ -2,7 +2,7 @@
 
 import { FC } from 'react';
 
-import CountUpNumber from '../CountUpNumber/CountupNumber';
+import CountUpNumber from '../CountUpNumber/CountUpNumber';
 
 type Props = {
   heading1: React.ReactNode;

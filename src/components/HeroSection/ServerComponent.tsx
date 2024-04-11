@@ -20,6 +20,7 @@ export const section2 = (
         width={300}
         height={300}
         className='img scale-animation'
+        unoptimized
       />
     </div>
 

@@ -19,3 +19,12 @@ export const getRooms = async () => {
   );
   return result;
 };
+
+export const getRoom = async (slug: string) => {
+  const result = await sanityClient.fetch<Room>(
+    queries.getRoom,
+    { slug },
+    { cache: 'no-cache' }
+  );
+  return result;
+};

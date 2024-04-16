@@ -41,8 +41,8 @@ const HotelPhotoGallery: FC<{ photos: ImageType[] }> = ({ photos }) => {
         <div className='h-[540px] relative rounded-2xl overflow-hidden'>
           <div className='hidden md:flex justify-center items-center w-full h-full'>
             <Image
-              src={photos[currentPhotoIndex].url}
-              alt={`Room Photo ${currentPhotoIndex + 1}`}
+              src={photos[0].url}
+              alt={`Room Photo 1`}
               className='img scale-animation cursor-pointer'
               width={150}
               height={150}
@@ -65,8 +65,14 @@ const HotelPhotoGallery: FC<{ photos: ImageType[] }> = ({ photos }) => {
         {/* display images on mobile view */}
         <div className='md:hidden flex justify-between items-center'>
           <div className='flex space-x-2'>
-            <FaArrowLeft className='cursor-pointer' onClick={handlePrevious} />
-            <FaArrowRight className='cursor-pointer' onClick={handleNext} />
+            <FaArrowLeft
+              className='cursor-pointer element-selected'
+              onClick={handlePrevious}
+            />
+            <FaArrowRight
+              className='cursor-pointer element-selected'
+              onClick={handleNext}
+            />
           </div>
           <span>
             {currentPhotoIndex + 1} / {photos.length}

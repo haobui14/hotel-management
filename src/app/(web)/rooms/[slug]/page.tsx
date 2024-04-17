@@ -11,6 +11,7 @@ import { getRoom } from '@/libs/apis';
 import LoadingSpinner from '../../loading';
 import HotelPhotoGallery from '@/components/HotelPhotoGallery/HotelPhotoGallery';
 import BookRoomCta from '@/components/BookRoomCta/BookRoomCta';
+import toast from 'react-hot-toast';
 
 const RoomDetails = (props: { params: { slug: string } }) => {
   const {
@@ -47,9 +48,30 @@ const RoomDetails = (props: { params: { slug: string } }) => {
     return null;
   };
 
+  const calcNumOfDays = () => {
+    if (!checkinDate || !checkoutDate) {
+      return;
+    }
+    const timeDiff = checkoutDate.getTime() - checkinDate.getTime();
+    const numOfDays = Math.ceil(timeDiff / (24 * 60 * 60 * 1000));
+    return numOfDays;
+  };
+
   const handleBookNowClick = () => {
-    
-  }
+    if (!checkinDate || !checkoutDate) {
+      return toast.error('Please provide checkin / checkout date');
+    }
+
+    if (checkinDate > checkoutDate) {
+      return toast.error('Please choose a valid checkin period');
+    }
+
+    const numberOfDays = calcNumOfDays();
+
+    const hotelRoomSlug = room.slug.current;
+
+    //Integrate Stripe
+  };
 
   return (
     <div>

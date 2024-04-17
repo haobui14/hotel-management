@@ -1,4 +1,6 @@
-import { Room } from '@/models/room';
+import axios from 'axios';
+
+import { CreateBookingDto, Room } from '@/models/room';
 import sanityClient from './sanity';
 import * as queries from './sanityQueries';
 
@@ -27,4 +29,49 @@ export const getRoom = async (slug: string) => {
     { cache: 'no-cache' }
   );
   return result;
+};
+
+export const createBooking = async ({
+  adults,
+  checkinDate,
+  checkoutDate,
+  children,
+  discount,
+  hotelRoom,
+  numberOfDays,
+  totalPrice,
+  user,
+}: CreateBookingDto) => {
+  const mutation = {
+    mutations: [
+      {
+        create: {
+          _type: 'booking',
+          user: {
+            _type: 'reference',
+            _ref: user,
+          },
+          hotelRoom: {
+            _type: 'reference',
+            _ref: hotelRoom,
+          },
+          checkinDate,
+          checkoutDate,
+          numberOfDays,
+          adults,
+          children,
+          totalPrice,
+          discount,
+        },
+      },
+    ],
+  };
+
+  const { data } = await axios.post(
+    `https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v2024-04-09/data/mutate/${process.env.NEXT_PUBLIC_SANITY_DATASET}`,
+    mutation,
+    { headers: { Authorization: `Bearer ${process.env.SANITY_STUDIO_TOKEN}` } }
+  );
+
+  return data;
 };

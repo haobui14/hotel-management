@@ -67,11 +67,17 @@ export const POST = async (req: Request, res: Response) => {
               name: room.name,
               images: room.images.map((image) => image.url),
             },
+            unit_amount: parseInt((totalPrice * 100).toString()),
           },
         },
       ],
       payment_method_types: ['card'],
-      success_url: `${origin}/users/${userId}`
+      success_url: `${origin}/users/${userId}`,
+    });
+
+    return NextResponse.json(stripeSession, {
+      status: 200,
+      statusText: 'Payment session created',
     });
   } catch (error: any) {
     console.log('Payment failed', error);

@@ -153,6 +153,7 @@ const BookRoomCta: FC<Props> = (props) => {
       )}
 
       <button
+        disabled={isBooked}
         onClick={handleBookNowClick}
         className='btn-primary w-full mt-6 disabled:bg-gray-500 disabled:cursor-not-allowed'
       >

@@ -103,7 +103,7 @@ export const updateHotelRoom = async (hotelRoomId: string) => {
 };
 
 export const getUserBookings = async (userId: string) => {
-  const result = await sanityClient.fetch<Booking>(
+  const result = await sanityClient.fetch<Booking[]>(
     queries.getUserBookingsQuery,
     {
       userId,

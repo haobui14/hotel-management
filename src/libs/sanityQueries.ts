@@ -66,6 +66,6 @@ export const getUserDataQuery = groq`*[_type == 'user' && _id == $userId][0] {
   email, 
   isAdmin,
   about,
-  _createAt,
+  _createdAt,
   image
 }`;

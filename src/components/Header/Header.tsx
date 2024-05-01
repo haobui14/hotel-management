@@ -1,11 +1,11 @@
 'use client';
 
-import ThemeContext from '@/context/themeContext';
-import Link from 'next/link';
 import { useContext } from 'react';
-import { FaUserCircle } from 'react-icons/fa';
+import { signOut, useSession } from 'next-auth/react';
+import Link from 'next/link';
+import ThemeContext from '@/context/themeContext';
+import { FaSignOutAlt, FaUserCircle } from 'react-icons/fa';
 import { MdDarkMode, MdOutlineLightMode } from 'react-icons/md';
-import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 
 const Header = () => {
@@ -67,7 +67,7 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      <ul className='flex items-center justify-between w-full lg:w-1/3'>
+      <ul className='flex items-center justify-between w-full lg:w-2/3'>
         <li className='hover:-translate-y-2 duration-500 transition-all element-selected'>
           <Link href='/'>Home</Link>
         </li>
@@ -77,6 +77,19 @@ const Header = () => {
         <li className='hover:-translate-y-2 duration-500 transition-all element-selected'>
           <Link href='/'>Contact</Link>
         </li>
+        {session ? (
+          <li
+            className='flex items-center gap-1 hover:-translate-y-2 duration-500 transition-all element-selected'
+            onClick={() => signOut({ callbackUrl: '/' })}
+          >
+            <Link href='/'>Logout</Link>
+            <FaSignOutAlt
+              className='text-xl cursor-pointer'
+            />
+          </li>
+        ) : (
+          ''
+        )}
       </ul>
     </header>
   );

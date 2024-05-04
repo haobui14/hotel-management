@@ -14,6 +14,8 @@ import { BsJournalBookmarkFill } from 'react-icons/bs';
 import { GiMoneyStack } from 'react-icons/gi';
 import Table from '@/components/Table/Table';
 import Chart from '@/components/Chart/Chart';
+import RatingModal from '@/components/RatingModal/RatingModal';
+import BackDrop from '@/components/BackDrop/BackDrop';
 
 const UserDetails = (props: { params: { id: string } }) => {
   const {
@@ -24,6 +26,16 @@ const UserDetails = (props: { params: { id: string } }) => {
     'bookings' | 'amount' | 'ratings'
   >('bookings');
   const [roomId, setRoomId] = useState<string | null>(null);
+  const [isRatingVisible, setIsRatingVisible] = useState(false);
+  const [isSubmittingReview, setIsSubmittingReview] = useState(false);
+  const [ratingValue, setRatingValue] = useState(0);
+  const [ratingText, setRatingText] = useState('');
+
+  const toggleRatingModal = () => setIsRatingVisible((prevState) => !prevState);
+
+  const reviewSubmitHandler = async () => {
+    //
+  };
 
   const fetchUserBooking = async () => getUserBookings(userId);
   const fetchUserData = async () => {
@@ -159,7 +171,11 @@ const UserDetails = (props: { params: { id: string } }) => {
 
           {currentNav === 'bookings' ? (
             userBookings && (
-              <Table bookingDetails={userBookings} setRoomId={setRoomId} />
+              <Table
+                bookingDetails={userBookings}
+                setRoomId={setRoomId}
+                toggleRatingModal={toggleRatingModal}
+              />
             )
           ) : (
             <></>
@@ -172,6 +188,21 @@ const UserDetails = (props: { params: { id: string } }) => {
           )}
         </div>
       </div>
+
+      <RatingModal
+        isOpen={isRatingVisible}
+        ratingValue={ratingValue}
+        setRatingValue={setRatingValue}
+        ratingText={ratingText}
+        setRatingText={setRatingText}
+        isSubmittingReview={isSubmittingReview}
+        reviewSubmitHandler={reviewSubmitHandler}
+        toggleRatingModal={toggleRatingModal}
+      />
+      <BackDrop
+        isOpen={isRatingVisible}
+        toggleRatingModal={toggleRatingModal}
+      />
     </div>
   );
 };

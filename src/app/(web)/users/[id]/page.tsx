@@ -75,7 +75,9 @@ const UserDetails = (props: { params: { id: string } }) => {
     data: userBookings,
     error,
     isLoading,
-  } = useSWR('/api/userbooking', fetchUserBooking);
+  } = useSWR('/api/userbooking', fetchUserBooking, {
+    revalidateOnMount: true,
+  });
 
   const {
     data: userData,

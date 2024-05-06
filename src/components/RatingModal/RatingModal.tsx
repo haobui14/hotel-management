@@ -4,11 +4,11 @@ import { BsStarFill } from 'react-icons/bs';
 
 type Props = {
   isOpen: boolean;
-  ratingValue: number;
-  setRatingValue: Dispatch<SetStateAction<number>>;
+  ratingValue: number | null;
+  setRatingValue: Dispatch<SetStateAction<number | null>>;
   ratingText: string;
   setRatingText: Dispatch<SetStateAction<string>>;
-  reviewSubmitHandler: () => Promise<void>;
+  reviewSubmitHandler: () => Promise<string | undefined>;
   isSubmittingReview: boolean;
   toggleRatingModal: () => void;
 };
@@ -22,7 +22,7 @@ const RatingModal: FC<Props> = (props) => {
     setRatingText,
     reviewSubmitHandler,
     isSubmittingReview,
-    toggleRatingModal
+    toggleRatingModal,
   } = props;
 
   const starValues = [1, 2, 3, 4, 5];
@@ -47,7 +47,9 @@ const RatingModal: FC<Props> = (props) => {
             {starValues.map((value) => (
               <button
                 className={`w-6 h-6 ${
-                  ratingValue >= value ? 'text-yellow-500' : 'text-gray-300'
+                  ratingValue && ratingValue >= value
+                    ? 'text-yellow-500'
+                    : 'text-gray-300'
                 }`}
                 onClick={() => setRatingValue(value)}
                 key={value}
@@ -78,7 +80,12 @@ const RatingModal: FC<Props> = (props) => {
           >
             {isSubmittingReview ? 'Submitting' : 'Submit'}
           </button>
-          <button onClick={toggleRatingModal} className='ml-2 px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400'>Cancel</button>
+          <button
+            onClick={toggleRatingModal}
+            className='ml-2 px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400'
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </div>

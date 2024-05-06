@@ -19,7 +19,7 @@ const RoomReview: FC<Props> = ({ roomId }) => {
     data: roomReviews,
     error,
     isLoading,
-  } = useSWR('/api/room-reviews', fetchRoomReviews);
+  } = useSWR(`/api/room-reviews/${roomId}`, fetchRoomReviews);
 
   if (error) {
     throw new Error('Cannot fetch data');

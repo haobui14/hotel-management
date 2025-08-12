@@ -34,6 +34,8 @@ export type Room = {
   slug: Slug;
   specialNote: string;
   type: string;
+  averageRating?: number;
+  reviewCount?: number;
 };
 
 export type CreateBookingDto = {

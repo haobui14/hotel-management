@@ -1,15 +1,19 @@
-import account from './account';
-import booking from './booking';
-import hotelRoom from './hotelRoom';
-import review from './review';
-import user from './user';
-import verificationToken from './verificationToken';
+import account from "./account";
+import booking from "./booking";
+import hotelRoom from "./hotelRoom";
+import review from "./review";
+import session from "./session";
+import user from "./user";
+import verificationToken from "./verificationToken";
 
 export const schemaTypes = [
+  // NextAuth schemas
   user,
   account,
-  booking,
-  hotelRoom,
-  review,
+  session,
   verificationToken,
+  // Hotel management schemas
+  hotelRoom,
+  booking,
+  review,
 ];

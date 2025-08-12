@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom utility classes */
 .img {
   @apply object-cover w-full h-full;
 }
@@ -34,6 +35,85 @@
   -ms-user-select: none;
   user-select: none;
   &:focus {
-      outline: none;
-    }
+    outline: none;
+  }
+}
+
+/* Additional modern enhancements */
+.gradient-text-warm {
+  @apply bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent;
+}
+
+.gradient-text-cool {
+  @apply bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent;
+}
+
+.gradient-text-romantic {
+  @apply bg-gradient-to-r from-rose-600 to-pink-600 bg-clip-text text-transparent;
+}
+
+.gradient-text-royal {
+  @apply bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent;
+}
+
+.glass-effect {
+  @apply bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-20;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-amber-500 to-orange-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply from-amber-600 to-orange-700;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Loading animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.shimmer {
+  animation: shimmer 1.6s ease-in-out infinite;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
 }

@@ -1,24 +1,27 @@
-import { defineField } from 'sanity';
+import { defineField } from "sanity";
 
 const verificationToken = {
-  name: 'verification-token',
-  title: 'Verification Token',
-  type: 'document',
+  name: "verificationToken",
+  title: "Verification Token",
+  type: "document",
   fields: [
     defineField({
-      name: 'identifier',
-      title: 'Identifier',
-      type: 'string',
+      name: "identifier",
+      title: "Identifier",
+      type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'token',
-      title: 'Token',
-      type: 'string',
+      name: "token",
+      title: "Token",
+      type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'expires',
-      title: 'Expires',
-      type: 'datetime',
+      name: "expires",
+      title: "Expires",
+      type: "datetime",
+      validation: (Rule) => Rule.required(),
     }),
   ],
 };

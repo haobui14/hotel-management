@@ -1,25 +1,53 @@
 const NewsLetter = () => {
   return (
-    <section className='container mx-auto px-4'>
-      <form className='bg-primary text-white px-4 rounded-xl md:rounded-[30px] flex flex-col justify-center items-center py-6 md:py-24'>
-        <p className='md:font-semibold text-lg md:text-xl text-center mb-3'>
-          Explore More About Our Hotel
-        </p>
-        <h6 className='md:font-semibold font-medium text-2xl md:text-3xl lg:text-5xl text-center'>
-          Sign Up for Our Newsletter
-        </h6>
+    <section className="container mx-auto px-4">
+      <div className="relative overflow-hidden rounded-3xl">
+        {/* Background with gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-600 via-orange-600 to-red-500"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-20"></div>
 
-        <div className='flex-col justify-center w-full md:flex-row flex pt-12'>
-          <input
-            type='email'
-            placeholder='Your email'
-            className='bg-[#026057] h-11 md:h-16 mb-2 md:mb-0 rounded-xl pl-6 md:mr-5 md:w-[452px] text-white placeholder:text-white focus:outline-none'
-          />
-          <button type='button' className='btn-tertiary'>
-            Subscribe
-          </button>
-        </div>
-      </form>
+        {/* Decorative elements */}
+        <div className="absolute top-10 left-10 w-20 h-20 bg-white bg-opacity-10 rounded-full"></div>
+        <div className="absolute bottom-10 right-10 w-32 h-32 bg-white bg-opacity-10 rounded-full"></div>
+        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white bg-opacity-5 rounded-full"></div>
+
+        <form className="relative z-10 text-white px-6 md:px-12 flex flex-col justify-center items-center py-16 md:py-24">
+          <div className="text-center mb-12">
+            <p className="text-lg md:text-xl font-medium mb-4 opacity-90">
+              Stay Updated with Exclusive Offers
+            </p>
+            <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-6">
+              Join Our Newsletter
+            </h2>
+            <p className="text-lg opacity-80 max-w-2xl mx-auto">
+              Get the latest updates on special packages, seasonal offers, and
+              luxury experiences delivered straight to your inbox.
+            </p>
+          </div>
+
+          <div className="w-full max-w-2xl">
+            <div className="flex flex-col md:flex-row gap-4 items-stretch">
+              <div className="flex-1">
+                <input
+                  type="email"
+                  placeholder="Enter your email address"
+                  className="w-full h-14 md:h-16 rounded-2xl px-6 bg-white bg-opacity-20 backdrop-blur-sm border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 transition-all duration-300"
+                />
+              </div>
+              <button
+                type="button"
+                className="h-14 md:h-16 px-8 md:px-12 bg-white text-orange-700 font-bold rounded-2xl hover:bg-opacity-90 transform hover:scale-105 transition-all duration-300 shadow-lg whitespace-nowrap"
+              >
+                Subscribe Now
+              </button>
+            </div>
+
+            <p className="text-sm opacity-70 text-center mt-4">
+              No spam, unsubscribe at any time. We respect your privacy.
+            </p>
+          </div>
+        </form>
+      </div>
     </section>
   );
 };

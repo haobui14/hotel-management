@@ -1,12 +1,12 @@
-import Stripe from 'stripe';
+import Stripe from "stripe";
 
-import { authOptions } from '@/libs/auth';
-import { getServerSession } from 'next-auth';
-import { NextResponse } from 'next/server';
-import { getRoom } from '@/libs/apis';
+import { authOptions } from "@/libs/auth";
+import { getServerSession } from "next-auth";
+import { NextResponse } from "next/server";
+import { getRoom } from "@/libs/apis";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-  apiVersion: '2024-04-10',
+  apiVersion: "2024-04-10",
 });
 
 type RequestData = {
@@ -18,7 +18,7 @@ type RequestData = {
   hotelRoomSlug: string;
 };
 
-export const POST = async (req: Request, res: Response) => {
+export const POST = async (req: Request) => {
   const {
     checkinDate,
     checkoutDate,
@@ -35,20 +35,20 @@ export const POST = async (req: Request, res: Response) => {
     !hotelRoomSlug ||
     !numberOfDays
   ) {
-    return new NextResponse('Please all fields are required', { status: 400 });
+    return new NextResponse("Please all fields are required", { status: 400 });
   }
 
-  const origin = req.headers.get('origin');
+  const origin = req.headers.get("origin");
 
   const session = await getServerSession(authOptions);
 
   if (!session) {
-    return new NextResponse('Authentication required', { status: 400 });
+    return new NextResponse("Authentication required", { status: 400 });
   }
 
   const userId = session.user.id;
-  const formattedCheckoutDate = checkoutDate.split('T')[0];
-  const formattedCheckinDate = checkinDate.split('T')[0];
+  const formattedCheckoutDate = checkoutDate.split("T")[0];
+  const formattedCheckinDate = checkinDate.split("T")[0];
 
   try {
     const room = await getRoom(hotelRoomSlug);
@@ -57,12 +57,12 @@ export const POST = async (req: Request, res: Response) => {
 
     //create a Stripe payment
     const stripeSession = await stripe.checkout.sessions.create({
-      mode: 'payment',
+      mode: "payment",
       line_items: [
         {
           quantity: 1,
           price_data: {
-            currency: 'usd',
+            currency: "usd",
             product_data: {
               name: room.name,
               images: room.images.map((image) => image.url),
@@ -71,7 +71,7 @@ export const POST = async (req: Request, res: Response) => {
           },
         },
       ],
-      payment_method_types: ['card'],
+      payment_method_types: ["card"],
       success_url: `${origin}/users/${userId}`,
       metadata: {
         adults,
@@ -88,10 +88,10 @@ export const POST = async (req: Request, res: Response) => {
 
     return NextResponse.json(stripeSession, {
       status: 200,
-      statusText: 'Payment session created',
+      statusText: "Payment session created",
     });
   } catch (error: any) {
-    console.log('Payment failed', error);
+    console.log("Payment failed", error);
     return new NextResponse(error, { status: 500 });
   }
 };

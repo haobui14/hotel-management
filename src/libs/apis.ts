@@ -1,16 +1,16 @@
-import axios from 'axios';
+import axios from "axios";
 
-import { CreateBookingDto, Room } from '@/models/room';
-import sanityClient from './sanity';
-import * as queries from './sanityQueries';
-import { Booking } from '@/models/booking';
-import { CreateReviewDto, Review, UpdateReviewDto } from '@/models/review';
+import { CreateBookingDto, Room } from "@/models/room";
+import sanityClient from "./sanity";
+import * as queries from "./sanityQueries";
+import { Booking } from "@/models/booking";
+import { CreateReviewDto, Review, UpdateReviewDto } from "@/models/review";
 
 export const getFeaturedRoom = async () => {
   const result = await sanityClient.fetch<Room>(
     queries.getFeaturedRoomQuery,
     {},
-    { cache: 'no-cache' }
+    { cache: "no-cache" }
   );
   return result;
 };
@@ -19,7 +19,7 @@ export const getRooms = async () => {
   const result = await sanityClient.fetch<Room[]>(
     queries.getRoomsQuery,
     {},
-    { cache: 'no-cache' }
+    { cache: "no-cache" }
   );
   return result;
 };
@@ -28,7 +28,7 @@ export const getRoom = async (slug: string) => {
   const result = await sanityClient.fetch<Room>(
     queries.getRoom,
     { slug },
-    { cache: 'no-cache' }
+    { cache: "no-cache" }
   );
   return result;
 };
@@ -48,13 +48,13 @@ export const createBooking = async ({
     mutations: [
       {
         create: {
-          _type: 'booking',
+          _type: "booking",
           user: {
-            _type: 'reference',
+            _type: "reference",
             _ref: user,
           },
           hotelRoom: {
-            _type: 'reference',
+            _type: "reference",
             _ref: hotelRoom,
           },
           checkinDate,
@@ -109,7 +109,7 @@ export const getUserBookings = async (userId: string) => {
     {
       userId,
     },
-    { cache: 'no-cache' }
+    { cache: "no-cache" }
   );
 
   return result;
@@ -121,7 +121,7 @@ export const getUserData = async (userId: string) => {
     {
       userId,
     },
-    { cache: 'no-cache' }
+    { cache: "no-cache" }
   );
 
   return result;
@@ -183,13 +183,13 @@ export const createReview = async ({
     mutations: [
       {
         create: {
-          _type: 'review',
+          _type: "review",
           user: {
-            _type: 'reference',
+            _type: "reference",
             _ref: userId,
           },
           hotelRoom: {
-            _type: 'reference',
+            _type: "reference",
             _ref: hotelRoomId,
           },
           userRating,
@@ -217,7 +217,8 @@ export const getRoomReviews = async (roomId: string) => {
       roomId,
     },
     {
-      cache: 'no-cache',
+      cache: "no-cache",
+      next: { revalidate: 0 }, // Force fresh data
     }
   );
 

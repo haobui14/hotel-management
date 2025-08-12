@@ -1,4 +1,4 @@
-import { groq } from 'next-sanity';
+import { groq } from "next-sanity";
 
 export const getFeaturedRoomQuery = groq`*[_type == 'hotelRoom' && isFeatured == true][0]{
   _id,
@@ -40,16 +40,19 @@ export const getRoom = groq`*[_type == "hotelRoom" && slug.current == $slug][0]{
   price,
   slug,
   specialNote,
-  type
+  type,
+  "averageRating": math::avg(*[_type == 'review' && hotelRoom._ref == ^._id && isApproved == true].userRating),
+  "reviewCount": count(*[_type == 'review' && hotelRoom._ref == ^._id && isApproved == true])
 }`;
 
-export const getUserBookingsQuery = groq`*[_type == 'booking' && user._ref == $userId] {
+export const getUserBookingsQuery = groq`*[_type == 'booking' && user._ref == $userId] | order(_createdAt desc) {
   _id,
   hotelRoom -> {
     _id,
     name, 
     slug,
-    price
+    price,
+    coverImage
   },
   checkinDate,
   checkoutDate,
@@ -57,7 +60,9 @@ export const getUserBookingsQuery = groq`*[_type == 'booking' && user._ref == $u
   adults,
   children,
   totalPrice,
-  discount
+  discount,
+  status,
+  specialRequests
 }`;
 
 export const getUserDataQuery = groq`*[_type == 'user' && _id == $userId][0] {
@@ -70,12 +75,74 @@ export const getUserDataQuery = groq`*[_type == 'user' && _id == $userId][0] {
   image
 }`;
 
-export const getRoomReviewsQuery = groq`*[_type == 'review' && hotelRoom._ref == $roomId] {
+export const getRoomReviewsQuery = groq`*[_type == 'review' && hotelRoom._ref == $roomId && isApproved == true] | order(_createdAt desc) {
  _createdAt,
  _id,
+ title,
  text,
- user -> {
-  name
+ "user": user->{
+  name,
+  image
  }, 
- userRating
+ userRating,
+ helpfulVotes
+}`;
+
+// Admin queries
+export const getAllBookingsQuery = groq`*[_type == 'booking'] | order(_createdAt desc) {
+  _id,
+  _createdAt,
+  user -> {
+    _id,
+    name,
+    email
+  },
+  hotelRoom -> {
+    _id,
+    name,
+    type,
+    price
+  },
+  checkinDate,
+  checkoutDate,
+  numberOfDays,
+  adults,
+  children,
+  totalPrice,
+  status,
+  specialRequests
+}`;
+
+export const getAllReviewsQuery = groq`*[_type == 'review'] | order(_createdAt desc) {
+  _id,
+  _createdAt,
+  title,
+  text,
+  userRating,
+  isApproved,
+  helpfulVotes,
+  user -> {
+    name,
+    email
+  },
+  hotelRoom -> {
+    name,
+    type
+  }
+}`;
+
+export const getDashboardStatsQuery = groq`{
+  "totalRooms": count(*[_type == 'hotelRoom']),
+  "totalBookings": count(*[_type == 'booking']),
+  "totalReviews": count(*[_type == 'review']),
+  "totalUsers": count(*[_type == 'user']),
+  "featuredRooms": count(*[_type == 'hotelRoom' && isFeatured == true]),
+  "pendingReviews": count(*[_type == 'review' && isApproved == false]),
+  "recentBookings": *[_type == 'booking'] | order(_createdAt desc)[0...5] {
+    _id,
+    checkinDate,
+    totalPrice,
+    user -> { name },
+    hotelRoom -> { name }
+  }
 }`;

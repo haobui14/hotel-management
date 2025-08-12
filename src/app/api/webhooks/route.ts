@@ -1,16 +1,16 @@
-import { createBooking, updateHotelRoom } from '@/libs/apis';
-import { NextResponse } from 'next/server';
-import Stripe from 'stripe';
+import { createBooking, updateHotelRoom } from "@/libs/apis";
+import { NextResponse } from "next/server";
+import Stripe from "stripe";
 
-const checkout_session_completed = 'checkout.session.completed';
+const checkout_session_completed = "checkout.session.completed";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-  apiVersion: '2024-04-10',
+  apiVersion: "2024-04-10",
 });
 
-export const POST = async (req: Request, res: Response) => {
+export const POST = async (req: Request) => {
   const reqBody = await req.text();
-  const sig = req.headers.get('stripe-signature');
+  const sig = req.headers.get("stripe-signature");
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
   let event: Stripe.Event;
@@ -68,9 +68,9 @@ export const POST = async (req: Request, res: Response) => {
       //Update hotel room
       await updateHotelRoom(hotelRoom);
 
-      return NextResponse.json('Booking Successful', {
+      return NextResponse.json("Booking Successful", {
         status: 200,
-        statusText: 'Bookking Successful',
+        statusText: "Bookking Successful",
       });
 
     default:
@@ -78,8 +78,8 @@ export const POST = async (req: Request, res: Response) => {
       break;
   }
 
-  return NextResponse.json('Event Received', {
+  return NextResponse.json("Event Received", {
     status: 200,
-    statusText: 'Event Received',
+    statusText: "Event Received",
   });
 };

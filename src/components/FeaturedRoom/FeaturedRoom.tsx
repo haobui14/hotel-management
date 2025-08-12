@@ -1,8 +1,8 @@
-import { FC } from 'react';
-import Image from 'next/image';
+import { FC } from "react";
+import Image from "next/image";
 
-import { Room } from '@/models/room';
-import Link from 'next/link';
+import { Room } from "@/models/room";
+import Link from "next/link";
 
 type Props = {
   featuredRoom: Room;
@@ -12,57 +12,91 @@ const FeaturedRoom: FC<Props> = (props) => {
   const { featuredRoom } = props;
 
   return (
-    <section className='flex md:flex-row flex-col py-10 px-4 items-center gap-12 container mx-auto'>
-      <div className='md:grid gap-8 grid-cols-1'>
-        <div className='rounded-2xl overflow-hidden h-48 mb-4 md:mb-0'>
-          <Image
-            src={featuredRoom.coverImage.url}
-            alt={featuredRoom.name}
-            width={300}
-            height={300}
-            unoptimized
-            className='img scale-animation'
-          />
-        </div>
-        <div className='grid grid-cols-2 gap-8 h-48'>
-          {featuredRoom.images.splice(1, 2).map((image) => (
-            <div key={image._key} className='rounded-2xl overflow-hidden'>
-              <Image
-                src={image.url}
-                alt={image._key}
-                width={300}
-                height={300}
-                className='img scale-animation'
-              />
-            </div>
-          ))}
-        </div>
+    <section className="container mx-auto px-4">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-4">
+          Featured Room
+        </h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-rose-500 to-pink-600 mx-auto rounded-full"></div>
       </div>
 
-      <div className='md:py-10 md:w-1/2 text-left'>
-        <h3 className='font-heading mb-12'>Featured Room</h3>
-        <p className='font-normal max-w-md'>{featuredRoom.description}</p>
-        <div className='flex flex-col md:flex-row md:items-end justify-between mt-5'>
-          <div className='flex mb-3 md:mb-0'>
-            <div className='flex gap-3 flex-col items-center justify-center mr-4'>
-              <p className='text-xs lg:text-xl text-center'>Start From</p>
-              <p className='md:font-bold flex font-medium text-lg xl:text-5xl'>
-                $ {featuredRoom.price}
-              </p>
-            </div>
-            <div className='flex gap-3 flex-col items-center justify-center mr-4'>
-              <p className='text-xs lg:text-xl text-center'>Discount</p>
-              <p className='md:font-bold flex font-medium text-lg xl:text-5xl'>
-                $ {featuredRoom.discount}
-              </p>
-            </div>
+      <div className="flex lg:flex-row flex-col items-center gap-16">
+        {/* Images Section */}
+        <div className="flex-1 space-y-6">
+          <div className="rounded-3xl overflow-hidden h-80 shadow-2xl group">
+            <Image
+              src={featuredRoom.coverImage.url}
+              alt={`${featuredRoom.name} - Featured luxury hotel room`}
+              width={600}
+              height={400}
+              className="img scale-animation group-hover:scale-110"
+              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
           </div>
-          <Link
-            href={`/rooms/${featuredRoom.slug.current}`}
-            className='border h-fit text-center border-tertiary-dark text-tertiary-dark px-3 py-2 lg:py-5 lg:px-7 rounded-2xl font-bold lg:text-xl'
-          >
-            More Details
-          </Link>
+          <div className="grid grid-cols-2 gap-6 h-48">
+            {featuredRoom.images.slice(1, 3).map((image) => (
+              <div
+                key={image._key}
+                className="rounded-2xl overflow-hidden shadow-lg group"
+              >
+                <Image
+                  src={image.url}
+                  alt={image._key}
+                  width={300}
+                  height={200}
+                  className="img scale-animation group-hover:scale-110"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Content Section */}
+        <div className="flex-1 space-y-8">
+          <div>
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-6">
+              {featuredRoom.name}
+            </h3>
+            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+              {featuredRoom.description}
+            </p>
+          </div>
+
+          {/* Pricing Section */}
+          <div className="bg-gradient-to-r from-rose-50 to-pink-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6">
+            <div className="grid grid-cols-2 gap-6 mb-6">
+              <div className="text-center">
+                <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">
+                  Starting From
+                </p>
+                <p className="text-3xl md:text-4xl font-bold text-rose-600">
+                  ${featuredRoom.price}
+                </p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  per night
+                </p>
+              </div>
+              <div className="text-center">
+                <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">
+                  You Save
+                </p>
+                <p className="text-3xl md:text-4xl font-bold text-emerald-600">
+                  ${featuredRoom.discount}
+                </p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  discount
+                </p>
+              </div>
+            </div>
+
+            <Link
+              href={`/rooms/${featuredRoom.slug.current}`}
+              className="block w-full text-center bg-gradient-to-r from-rose-500 to-pink-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:from-rose-600 hover:to-pink-700 transform hover:scale-105 transition-all duration-300 shadow-lg"
+            >
+              View Details & Book Now
+            </Link>
+          </div>
         </div>
       </div>
     </section>

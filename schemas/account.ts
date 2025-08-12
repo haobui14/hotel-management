@@ -1,39 +1,68 @@
-import { defineField } from 'sanity';
+import { defineField } from "sanity";
 
 const account = {
-  name: 'account',
-  title: 'Account',
-  type: 'document',
+  name: "account",
+  title: "Account",
+  type: "document",
   fields: [
     defineField({
-      name: 'providerType',
-      type: 'string',
+      name: "type",
+      title: "Account Type",
+      type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'providerId',
-      type: 'string',
+      name: "provider",
+      title: "Provider",
+      type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'providerAccountId',
-      type: 'string',
+      name: "providerAccountId",
+      title: "Provider Account ID",
+      type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'refreshToken',
-      type: 'string',
+      name: "refresh_token",
+      title: "Refresh Token",
+      type: "text",
     }),
     defineField({
-      name: 'accessToken',
-      type: 'string',
+      name: "access_token",
+      title: "Access Token",
+      type: "text",
     }),
     defineField({
-      name: 'accessTokenExpires',
-      type: 'number',
+      name: "expires_at",
+      title: "Expires At",
+      type: "number",
     }),
     defineField({
-      name: 'user',
-      title: 'user',
-      type: 'reference',
-      to: { type: 'user' },
+      name: "token_type",
+      title: "Token Type",
+      type: "string",
+    }),
+    defineField({
+      name: "scope",
+      title: "Scope",
+      type: "string",
+    }),
+    defineField({
+      name: "id_token",
+      title: "ID Token",
+      type: "text",
+    }),
+    defineField({
+      name: "session_state",
+      title: "Session State",
+      type: "string",
+    }),
+    defineField({
+      name: "userId",
+      title: "User ID",
+      type: "string",
+      validation: (Rule) => Rule.required(),
     }),
   ],
 };

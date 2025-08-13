@@ -357,7 +357,7 @@ const Cookies = () => {
                 <p>
                   <strong>Opt-out Tools:</strong> Many advertising networks
                   provide opt-out tools for targeted advertising. Visit the
-                  Digital Advertising Alliance's opt-out page for more
+                  Digital Advertising Alliance&apos;s opt-out page for more
                   information.
                 </p>
                 <p>
@@ -419,7 +419,7 @@ const Cookies = () => {
           </h2>
           <p className="text-xl text-blue-50 mb-8 max-w-2xl mx-auto font-medium">
             If you have any questions about our use of cookies or data privacy
-            practices, please don't hesitate to contact us.
+            practices, please don&apos;t hesitate to contact us.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">

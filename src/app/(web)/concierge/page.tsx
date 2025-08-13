@@ -497,7 +497,7 @@ const Concierge = () => {
                   ))}
                 </div>
                 <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed italic">
-                  "{testimonial.comment}"
+                  &ldquo;{testimonial.comment}&rdquo;
                 </p>
                 <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
                   <div className="font-bold text-gray-900 dark:text-white">

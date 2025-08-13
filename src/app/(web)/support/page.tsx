@@ -152,7 +152,7 @@ const Support = () => {
               Customer Support
             </h1>
             <p className="text-xl md:text-2xl text-amber-50 max-w-2xl mx-auto font-medium">
-              We're here to help 24/7 with exceptional service and support
+              We&apos;re here to help 24/7 with exceptional service and support
             </p>
           </div>
         </div>

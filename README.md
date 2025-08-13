@@ -17,6 +17,7 @@ Experience the full hotel management system with all features including room boo
 ## 🌟 Features
 
 ### 🏠 **Core Functionality**
+
 - **Modern Hotel Booking System** - Complete reservation management
 - **Room Management** - Detailed room information with amenities
 - **User Authentication** - Secure login with multiple providers
@@ -25,6 +26,7 @@ Experience the full hotel management system with all features including room boo
 - **Admin Dashboard** - Comprehensive management interface
 
 ### 🎨 **Design & UX**
+
 - **Luxury Theme** - Premium hotel branding with warm gradients
 - **Responsive Design** - Mobile-first, works on all devices
 - **Dark Mode Support** - Seamless light/dark theme switching
@@ -32,6 +34,7 @@ Experience the full hotel management system with all features including room boo
 - **Smooth Animations** - Engaging micro-interactions
 
 ### 📱 **Pages & Components**
+
 - **Home Page** - Hero section with room search
 - **Rooms** - Browse and filter hotel rooms
 - **Gallery** - Image showcase with lightbox
@@ -41,6 +44,7 @@ Experience the full hotel management system with all features including room boo
 - **User Profiles** - Account management with image upload
 
 ### 🔧 **Technical Features**
+
 - **Next.js 15** - App Router with Server Components
 - **TypeScript** - Full type safety
 - **Sanity CMS** - Headless content management
@@ -52,44 +56,49 @@ Experience the full hotel management system with all features including room boo
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js 18.17.0 or higher
 - npm, yarn, pnpm, or bun
 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/haobui14/hotel-management.git
    cd hotel-management
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Set up environment variables**
+
    ```bash
    cp .env.example .env.local
    ```
-   
+
    Fill in your environment variables:
+
    ```env
    # Sanity CMS
    NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
    NEXT_PUBLIC_SANITY_DATASET=production
    SANITY_STUDIO_TOKEN=your_studio_token
-   
+
    # NextAuth
    NEXTAUTH_SECRET=your_secret_key
    NEXTAUTH_URL=http://localhost:3001
-   
+
    # OAuth Providers
    GITHUB_CLIENT_ID=your_github_client_id
    GITHUB_CLIENT_SECRET=your_github_client_secret
    GOOGLE_CLIENT_ID=your_google_client_id
    GOOGLE_CLIENT_SECRET=your_google_client_secret
-   
+
    # Stripe
    STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
    STRIPE_SECRET_KEY=your_stripe_secret_key
@@ -97,6 +106,7 @@ Experience the full hotel management system with all features including room boo
    ```
 
 4. **Run the development server**
+
    ```bash
    npm run dev
    ```
@@ -147,22 +157,26 @@ npm run clean       # Clean build cache
 ## 🏗️ Tech Stack
 
 ### **Frontend**
+
 - **Next.js 15.4.6** - React framework with App Router
 - **React 19.1.1** - UI library with latest features
 - **TypeScript** - Type-safe development
 - **Tailwind CSS 3.4.17** - Utility-first CSS framework
 
 ### **Backend & CMS**
+
 - **Sanity 3.98.0** - Headless CMS for content management
 - **NextAuth.js 4.24.11** - Authentication solution
 - **Stripe** - Payment processing
 
 ### **Data & State**
+
 - **SWR 2.3.6** - Data fetching and caching
 - **Axios** - HTTP client
 - **React Hook Form** - Form handling
 
 ### **Utilities**
+
 - **date-fns** - Date manipulation
 - **bcryptjs** - Password hashing
 - **React Hot Toast** - Notifications
@@ -171,12 +185,14 @@ npm run clean       # Clean build cache
 ## 🎯 Key Features Detailed
 
 ### **Room Management**
+
 - Browse available rooms with filtering
 - Detailed room information with amenities
 - Image galleries with optimized loading
 - Real-time availability checking
 
 ### **Booking System**
+
 - Interactive date selection
 - Guest count configuration
 - Price calculation with discounts
@@ -184,18 +200,21 @@ npm run clean       # Clean build cache
 - Booking confirmation emails
 
 ### **Review System**
+
 - Customer reviews and ratings (1-5 stars)
 - Review moderation (auto-approved)
 - Review statistics and analytics
 - Helpful votes functionality
 
 ### **User Management**
+
 - User registration and authentication
 - Profile management with image upload
 - Booking history and analytics
 - Admin user capabilities
 
 ### **Content Management**
+
 - Sanity Studio integration
 - Image optimization and CDN
 - Content versioning and drafts
@@ -204,30 +223,36 @@ npm run clean       # Clean build cache
 ## 🔧 Configuration
 
 ### **Sanity Setup**
+
 1. Create a new Sanity project at [sanity.io](https://www.sanity.io)
 2. Configure your project ID and dataset
 3. Set up authentication tokens
 4. Import the schemas from the `schemas/` directory
 
 ### **Stripe Setup**
+
 1. Create a Stripe account
 2. Get your API keys from the Stripe dashboard
 3. Configure webhook endpoints for payment processing
 4. Set up your product catalog
 
 ### **OAuth Setup**
+
 1. **GitHub OAuth**: Create an app at [GitHub Developer Settings](https://github.com/settings/developers)
 2. **Google OAuth**: Set up OAuth at [Google Cloud Console](https://console.cloud.google.com)
 
 ## 🚀 Deployment
 
 ### **Vercel (Recommended)**
+
 1. Connect your GitHub repository to Vercel
 2. Configure environment variables
 3. Deploy with automatic builds
 
 ### **Other Platforms**
+
 The app can be deployed to any platform that supports Node.js:
+
 - Netlify
 - Railway
 - AWS

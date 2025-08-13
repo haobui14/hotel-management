@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 This release represents a complete transformation of the hotel management system with modern design, enhanced functionality, and production-ready features.
 
 ### ✨ Added
+
 - **New Pages**
   - Gallery page with lightbox functionality and image optimization
   - Contact page with interactive form and location information
@@ -42,6 +43,7 @@ This release represents a complete transformation of the hotel management system
   - Sanity CDN configuration for optimal image delivery
 
 ### 🛠️ Changed
+
 - **Design System**
   - Updated color palette with luxury hotel branding
   - Implemented consistent spacing and typography
@@ -61,6 +63,7 @@ This release represents a complete transformation of the hotel management system
   - Improved accessibility throughout the application
 
 ### 🐛 Fixed
+
 - **Profile Picture Issues**
   - Fixed z-index conflicts causing profile pictures to appear behind content
   - Resolved image upload and display inconsistencies
@@ -84,6 +87,7 @@ This release represents a complete transformation of the hotel management system
   - Enhanced image optimization and CDN usage
 
 ### 🗑️ Removed
+
 - **Debug Infrastructure**
   - Removed extensive debug pages and components
   - Cleaned up test API endpoints
@@ -97,6 +101,7 @@ This release represents a complete transformation of the hotel management system
   - Eliminated redundant styling classes
 
 ### 🔧 Configuration
+
 - **Environment Setup**
   - Updated Next.js configuration for Sanity CDN
   - Enhanced environment variable management
@@ -110,6 +115,7 @@ This release represents a complete transformation of the hotel management system
   - Added comprehensive documentation
 
 ### 📚 Documentation
+
 - **Comprehensive Guides**
   - Complete README with setup instructions
   - Sanity CMS setup guide
@@ -123,6 +129,7 @@ This release represents a complete transformation of the hotel management system
   - Deployment instructions
 
 ### 🚀 Performance
+
 - **Optimization Improvements**
   - Enhanced image loading with Next.js Image
   - Optimized bundle sizes and code splitting
@@ -140,6 +147,7 @@ This release represents a complete transformation of the hotel management system
 ## [1.0.0] - 2024-01-01
 
 ### Initial Release
+
 - Basic hotel management functionality
 - Room booking system
 - User authentication
@@ -152,6 +160,7 @@ This release represents a complete transformation of the hotel management system
 ## Future Roadmap
 
 ### Planned Features
+
 - [ ] Advanced analytics dashboard
 - [ ] Multi-language support
 - [ ] Email notification system
@@ -160,6 +169,7 @@ This release represents a complete transformation of the hotel management system
 - [ ] Mobile app development
 
 ### Technical Improvements
+
 - [ ] Progressive Web App (PWA) features
 - [ ] Advanced caching strategies
 - [ ] Performance monitoring
@@ -174,11 +184,13 @@ This release represents a complete transformation of the hotel management system
 ### Upgrading from v1.0.0 to v2.0.0
 
 **Breaking Changes:**
+
 - Updated Next.js to version 15 (requires Node.js 18.17.0+)
 - Modified user session type to include `id` property
 - Changed default development port from 3000 to 3001
 
 **Migration Steps:**
+
 1. Update Node.js to version 18.17.0 or higher
 2. Update environment variables (see `.env.example`)
 3. Run `npm install` to update dependencies
@@ -186,6 +198,7 @@ This release represents a complete transformation of the hotel management system
 5. Test authentication flows with new session structure
 
 **Data Migration:**
+
 - No database migration required
 - Existing Sanity data remains compatible
 - User profiles will automatically include new fields on next login
@@ -195,10 +208,11 @@ This release represents a complete transformation of the hotel management system
 ## Support
 
 For questions about this changelog or upgrade assistance:
+
 - Create an issue in the GitHub repository
 - Check the documentation in the `/docs` folder
 - Contact the development team
 
 ---
 
-*This changelog is automatically updated with each release. For the most current information, check the latest version in the repository.*
+_This changelog is automatically updated with each release. For the most current information, check the latest version in the repository._

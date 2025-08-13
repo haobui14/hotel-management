@@ -16,12 +16,28 @@ export const getFeaturedRoom = async () => {
 };
 
 export const getRooms = async () => {
-  const result = await sanityClient.fetch<Room[]>(
-    queries.getRoomsQuery,
-    {},
-    { cache: "no-cache" }
-  );
-  return result;
+  try {
+    console.log("Fetching rooms with config:", {
+      projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+      dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+      useCdn: process.env.NODE_ENV === "production",
+      apiVersion: "2025-01-01",
+    });
+
+    const result = await sanityClient.fetch<Room[]>(
+      queries.getRoomsQuery,
+      {},
+      { cache: "no-cache" }
+    );
+
+    console.log("Rooms fetch result:", result);
+    return result;
+  } catch (error) {
+    console.error("Error fetching rooms:", error);
+    throw new Error(
+      `Failed to fetch rooms: ${error instanceof Error ? error.message : "Unknown error"}`
+    );
+  }
 };
 
 export const getRoom = async (slug: string) => {

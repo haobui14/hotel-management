@@ -5,8 +5,97 @@ import { MdOutlineCleaningServices } from "react-icons/md";
 import { LiaFireExtinguisherSolid } from "react-icons/lia";
 import { AiOutlineMedicineBox } from "react-icons/ai";
 import { GiSmokeBomb } from "react-icons/gi";
+import {
+  FaWifi,
+  FaCoffee,
+  FaTv,
+  FaSnowflake,
+  FaBed,
+  FaBath,
+  FaCubes,
+  FaSwimmer,
+  FaConciergeBell,
+  FaCar,
+  FaSpa,
+  FaDesktop,
+  FaUtensils,
+  FaParking,
+} from "react-icons/fa";
 import { useState } from "react";
 import axios from "axios";
+
+// Icon mapping for amenities
+const getAmenityIcon = (
+  iconName: string,
+  size: "small" | "large" = "large"
+) => {
+  const iconSize = size === "small" ? "text-sm" : "text-lg";
+  const iconMap: { [key: string]: React.ReactElement } = {
+    // FontAwesome class mappings
+    "fa-wifi": <FaWifi className={`text-white ${iconSize}`} />,
+    "fa-coffee": <FaCoffee className={`text-white ${iconSize}`} />,
+    "fa-tv": <FaTv className={`text-white ${iconSize}`} />,
+    "fa-snowflake": <FaSnowflake className={`text-white ${iconSize}`} />,
+    "fa-bed": <FaBed className={`text-white ${iconSize}`} />,
+    "fa-bath": <FaBath className={`text-white ${iconSize}`} />,
+    "fa-cubes": <FaCubes className={`text-white ${iconSize}`} />,
+    "fa-swimmer": <FaSwimmer className={`text-white ${iconSize}`} />,
+    "fa-concierge-bell": (
+      <FaConciergeBell className={`text-white ${iconSize}`} />
+    ),
+    "fa-car": <FaCar className={`text-white ${iconSize}`} />,
+    "fa-spa": <FaSpa className={`text-white ${iconSize}`} />,
+    "fa-desktop": <FaDesktop className={`text-white ${iconSize}`} />,
+    "fa-utensils": <FaUtensils className={`text-white ${iconSize}`} />,
+    "fa-parking": <FaParking className={`text-white ${iconSize}`} />,
+
+    // Amenity name mappings (fallback)
+    wifi: <FaWifi className={`text-white ${iconSize}`} />,
+    "free wifi": <FaWifi className={`text-white ${iconSize}`} />,
+    coffee: <FaCoffee className={`text-white ${iconSize}`} />,
+    "coffee maker": <FaCoffee className={`text-white ${iconSize}`} />,
+    tv: <FaTv className={`text-white ${iconSize}`} />,
+    "smart tv": <FaTv className={`text-white ${iconSize}`} />,
+    "air conditioning": <FaSnowflake className={`text-white ${iconSize}`} />,
+    bed: <FaBed className={`text-white ${iconSize}`} />,
+    "king size bed": <FaBed className={`text-white ${iconSize}`} />,
+    bathroom: <FaBath className={`text-white ${iconSize}`} />,
+    "private bathroom": <FaBath className={`text-white ${iconSize}`} />,
+    "mini fridge": <FaCubes className={`text-white ${iconSize}`} />,
+    pool: <FaSwimmer className={`text-white ${iconSize}`} />,
+    "pool access": <FaSwimmer className={`text-white ${iconSize}`} />,
+    "room service": <FaConciergeBell className={`text-white ${iconSize}`} />,
+    parking: <FaCar className={`text-white ${iconSize}`} />,
+    "valet parking": <FaCar className={`text-white ${iconSize}`} />,
+    spa: <FaSpa className={`text-white ${iconSize}`} />,
+    "spa access": <FaSpa className={`text-white ${iconSize}`} />,
+    "work desk": <FaDesktop className={`text-white ${iconSize}`} />,
+    desk: <FaDesktop className={`text-white ${iconSize}`} />,
+  };
+
+  // First try exact match
+  const exactMatch = iconMap[iconName?.toLowerCase()];
+  if (exactMatch) return exactMatch;
+
+  // If it's an emoji, return it wrapped in span
+  if (
+    iconName &&
+    /[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/u.test(
+      iconName
+    )
+  ) {
+    return (
+      <span
+        className={`text-white ${size === "small" ? "text-sm" : "text-xl"}`}
+      >
+        {iconName}
+      </span>
+    );
+  }
+
+  // Default fallback icon
+  return <FaDesktop className={`text-white ${iconSize}`} />;
+};
 
 import { getRoom, getRoomReviews } from "@/libs/apis";
 import LoadingSpinner from "../../loading";
@@ -137,9 +226,7 @@ const RoomDetailsClient = ({ slug }: { slug: string }) => {
                     className="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 group hover:-translate-y-1"
                   >
                     <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
-                      <i
-                        className={`fa-solid ${amenity.icon} text-white text-lg`}
-                      ></i>
+                      {getAmenityIcon(amenity.icon)}
                     </div>
                     <p className="text-sm md:text-base font-medium text-gray-700 dark:text-gray-300">
                       {amenity.amenity}
@@ -170,9 +257,7 @@ const RoomDetailsClient = ({ slug }: { slug: string }) => {
                   {room.offeredAmenities.map((amenity) => (
                     <div key={amenity._key} className="flex items-center group">
                       <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
-                        <i
-                          className={`fa-solid ${amenity.icon} text-white text-sm`}
-                        ></i>
+                        {getAmenityIcon(amenity.icon, "small")}
                       </div>
                       <p className="text-gray-700 dark:text-gray-300 font-medium">
                         {amenity.amenity}

@@ -138,18 +138,6 @@ const Header = () => {
                 </Link>
               )}
             </div>
-
-            {/* Mobile Menu Toggle - only show on mobile/tablet */}
-            <button
-              onClick={toggleMenu}
-              className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300"
-            >
-              {isMenuOpen ? (
-                <FaTimes className="text-gray-600 dark:text-gray-300 text-lg sm:text-xl" />
-              ) : (
-                <FaBars className="text-gray-600 dark:text-gray-300 text-lg sm:text-xl" />
-              )}
-            </button>
           </div>
         </div>
 

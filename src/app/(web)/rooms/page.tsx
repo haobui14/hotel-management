@@ -26,13 +26,39 @@ const Rooms = () => {
   }, [searchParams]);
 
   const fetchData = async () => {
-    return getRooms();
+    try {
+      console.log("Starting rooms fetch...");
+      const rooms = await getRooms();
+      console.log("Rooms fetched successfully:", rooms?.length || 0, "rooms");
+      return rooms;
+    } catch (error) {
+      console.error("Error in fetchData:", error);
+      throw error;
+    }
   };
 
   const { data, error, isLoading } = useSWR("get/hotelRooms", fetchData);
 
   if (error) {
-    throw new Error("Cannot fetch data");
+    console.error("SWR Error:", error);
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+        <div className="text-center p-8">
+          <h1 className="text-2xl font-bold text-red-600 mb-4">
+            Error Loading Rooms
+          </h1>
+          <p className="text-gray-600 dark:text-gray-400 mb-4">
+            {error.message || "Cannot fetch room data"}
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
   }
 
   if (typeof data === "undefined" && !isLoading) {

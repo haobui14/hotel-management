@@ -13,6 +13,7 @@ http://localhost:3001/api
 Most endpoints require authentication. The system uses NextAuth.js with sessions.
 
 ### Headers
+
 ```json
 {
   "Content-Type": "application/json",
@@ -25,17 +26,20 @@ Most endpoints require authentication. The system uses NextAuth.js with sessions
 ## 🏨 Room Endpoints
 
 ### Get All Rooms
+
 ```http
 GET /api/rooms
 ```
 
 **Query Parameters:**
+
 - `checkInDate` (optional) - ISO date string
 - `checkOutDate` (optional) - ISO date string
 - `adults` (optional) - Number of adults (default: 1)
 - `children` (optional) - Number of children (default: 0)
 
 **Response:**
+
 ```json
 {
   "rooms": [
@@ -62,11 +66,13 @@ GET /api/rooms
 ```
 
 ### Get Room by Slug
+
 ```http
 GET /api/rooms/[slug]
 ```
 
 **Response:**
+
 ```json
 {
   "room": {
@@ -95,14 +101,17 @@ GET /api/rooms/[slug]
 ## 👤 User Endpoints
 
 ### Get User Profile
+
 ```http
 GET /api/users
 ```
 
 **Headers:**
+
 - `Authorization: Bearer <token>` (required)
 
 **Response:**
+
 ```json
 {
   "_id": "user_id",
@@ -116,15 +125,18 @@ GET /api/users
 ```
 
 ### Update User Profile
+
 ```http
 PATCH /api/users
 ```
 
 **Headers:**
+
 - `Authorization: Bearer <token>` (required)
 - `Content-Type: application/json`
 
 **Body:**
+
 ```json
 {
   "name": "Updated Name",
@@ -134,6 +146,7 @@ PATCH /api/users
 ```
 
 **Response:**
+
 ```json
 {
   "message": "User updated successfully",
@@ -154,11 +167,13 @@ PATCH /api/users
 ## 📝 Review Endpoints
 
 ### Get Room Reviews
+
 ```http
 GET /api/room-reviews/[roomId]
 ```
 
 **Response:**
+
 ```json
 {
   "reviews": [
@@ -176,15 +191,18 @@ GET /api/room-reviews/[roomId]
 ```
 
 ### Create Room Review
+
 ```http
 POST /api/room-reviews/[roomId]
 ```
 
 **Headers:**
+
 - `Authorization: Bearer <token>` (required)
 - `Content-Type: application/json`
 
 **Body:**
+
 ```json
 {
   "reviewText": "Great experience!",
@@ -193,6 +211,7 @@ POST /api/room-reviews/[roomId]
 ```
 
 **Response:**
+
 ```json
 {
   "message": "Review created successfully",
@@ -212,14 +231,17 @@ POST /api/room-reviews/[roomId]
 ## 💳 Payment Endpoints
 
 ### Create Payment Intent
+
 ```http
 POST /api/stripe
 ```
 
 **Headers:**
+
 - `Content-Type: application/json`
 
 **Body:**
+
 ```json
 {
   "checkinDate": "2024-02-01",
@@ -233,6 +255,7 @@ POST /api/stripe
 ```
 
 **Response:**
+
 ```json
 {
   "paymentIntent": {
@@ -241,7 +264,7 @@ POST /api/stripe
     "amount": 53820,
     "currency": "usd"
   },
-  "totalPrice": 538.20,
+  "totalPrice": 538.2,
   "discount": 10
 }
 ```
@@ -251,6 +274,7 @@ POST /api/stripe
 ## 🔗 Webhook Endpoints
 
 ### Stripe Webhook
+
 ```http
 POST /api/webhooks
 ```
@@ -258,6 +282,7 @@ POST /api/webhooks
 Handles Stripe webhook events for payment processing.
 
 **Headers:**
+
 - `stripe-signature: <signature>` (required)
 
 ---
@@ -265,11 +290,13 @@ Handles Stripe webhook events for payment processing.
 ## 🔐 Authentication Endpoints
 
 ### NextAuth Endpoints
+
 ```http
 GET/POST /api/auth/[...nextauth]
 ```
 
 Handles all NextAuth.js authentication flows:
+
 - `/api/auth/signin` - Sign in page
 - `/api/auth/signout` - Sign out
 - `/api/auth/session` - Get current session
@@ -277,11 +304,13 @@ Handles all NextAuth.js authentication flows:
 - `/api/auth/providers` - Available providers
 
 ### Custom Sign Up
+
 ```http
 POST /api/sanity/signUp
 ```
 
 **Body:**
+
 ```json
 {
   "email": "user@example.com",
@@ -291,6 +320,7 @@ POST /api/sanity/signUp
 ```
 
 **Response:**
+
 ```json
 {
   "message": "User created successfully",
@@ -308,14 +338,17 @@ POST /api/sanity/signUp
 ## 📊 Booking Endpoints
 
 ### Get User Bookings
+
 ```http
 GET /api/users/[userId]/bookings
 ```
 
 **Headers:**
+
 - `Authorization: Bearer <token>` (required)
 
 **Response:**
+
 ```json
 {
   "bookings": [
@@ -331,7 +364,7 @@ GET /api/users/[userId]/bookings
       "numberOfDays": 2,
       "adults": 2,
       "children": 0,
-      "totalPrice": 538.20,
+      "totalPrice": 538.2,
       "discount": 10
     }
   ]
@@ -353,6 +386,7 @@ All endpoints return errors in this format:
 ```
 
 ### Common Error Codes
+
 - `400` - Bad Request
 - `401` - Unauthorized
 - `403` - Forbidden
@@ -360,6 +394,7 @@ All endpoints return errors in this format:
 - `500` - Internal Server Error
 
 ### Authentication Errors
+
 ```json
 {
   "error": "Authentication required",
@@ -368,6 +403,7 @@ All endpoints return errors in this format:
 ```
 
 ### Validation Errors
+
 ```json
 {
   "error": "Validation failed",
@@ -390,6 +426,7 @@ API endpoints have rate limiting to prevent abuse:
 - **Payment endpoints**: 20 requests per 15 minutes
 
 Rate limit headers:
+
 ```
 X-RateLimit-Limit: 100
 X-RateLimit-Remaining: 99
@@ -401,6 +438,7 @@ X-RateLimit-Reset: 1640995200
 ## Testing
 
 ### Using curl
+
 ```bash
 # Get all rooms
 curl -X GET "http://localhost:3001/api/rooms"
@@ -413,6 +451,7 @@ curl -X POST "http://localhost:3001/api/room-reviews/room_id" \
 ```
 
 ### Using Postman
+
 Import our [Postman collection](./postman/hotel-management-api.json) for easy testing.
 
 ---

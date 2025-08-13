@@ -23,7 +23,7 @@ const ClientComponent: FC<Props> = (props) => {
             <div className="bg-emerald-100 dark:bg-emerald-900 rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mx-auto mb-3 sm:mb-4">
               <span className="text-lg sm:text-2xl">🏨</span>
             </div>
-            <p className="text-xs sm:text-sm lg:text-lg font-semibold text-gray-600 dark:text-gray-300 mb-1 sm:mb-2">
+            <p className="text-xs sm:text-sm lg:text-lg font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
               Basic Rooms
             </p>
             <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-emerald-600">
@@ -35,7 +35,7 @@ const ClientComponent: FC<Props> = (props) => {
             <div className="bg-rose-100 dark:bg-rose-900 rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mx-auto mb-3 sm:mb-4">
               <span className="text-lg sm:text-2xl">🌟</span>
             </div>
-            <p className="text-xs sm:text-sm lg:text-lg font-semibold text-gray-600 dark:text-gray-300 mb-1 sm:mb-2">
+            <p className="text-xs sm:text-sm lg:text-lg font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
               Luxury Rooms
             </p>
             <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-rose-600">
@@ -47,7 +47,7 @@ const ClientComponent: FC<Props> = (props) => {
             <div className="bg-amber-100 dark:bg-amber-900 rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mx-auto mb-3 sm:mb-4">
               <span className="text-lg sm:text-2xl">👑</span>
             </div>
-            <p className="text-xs sm:text-sm lg:text-lg font-semibold text-gray-600 dark:text-gray-300 mb-1 sm:mb-2">
+            <p className="text-xs sm:text-sm lg:text-lg font-bold text-gray-700 dark:text-gray-200 mb-1 sm:mb-2">
               Premium Suites
             </p>
             <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-amber-600">

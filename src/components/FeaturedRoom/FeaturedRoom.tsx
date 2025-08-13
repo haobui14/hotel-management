@@ -58,7 +58,7 @@ const FeaturedRoom: FC<Props> = (props) => {
             <h3 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-6">
               {featuredRoom.name}
             </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            <p className="text-lg text-gray-700 dark:text-gray-200 leading-relaxed">
               {featuredRoom.description}
             </p>
           </div>
@@ -67,24 +67,24 @@ const FeaturedRoom: FC<Props> = (props) => {
           <div className="bg-gradient-to-r from-rose-50 to-pink-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6">
             <div className="grid grid-cols-2 gap-6 mb-6">
               <div className="text-center">
-                <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">
+                <p className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
                   Starting From
                 </p>
                 <p className="text-3xl md:text-4xl font-bold text-rose-600">
                   ${featuredRoom.price}
                 </p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-sm text-gray-600 dark:text-gray-300">
                   per night
                 </p>
               </div>
               <div className="text-center">
-                <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">
+                <p className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
                   You Save
                 </p>
                 <p className="text-3xl md:text-4xl font-bold text-emerald-600">
                   ${featuredRoom.discount}
                 </p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-sm text-gray-600 dark:text-gray-300">
                   discount
                 </p>
               </div>

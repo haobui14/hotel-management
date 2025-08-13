@@ -5,7 +5,7 @@ export const heading1 = (
     <h1 className="font-heading mb-4 sm:mb-6 bg-gradient-to-r from-amber-600 via-orange-600 to-red-500 bg-clip-text text-transparent text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight">
       Discover Luxury Beyond Expectations
     </h1>
-    <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 sm:mb-12 max-w-2xl leading-relaxed">
+    <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-200 mb-8 sm:mb-12 max-w-2xl leading-relaxed font-medium">
       Immerse yourself in unparalleled elegance and comfort. Experience
       world-class hospitality where every detail is crafted to perfection for
       your unforgettable stay.

@@ -103,7 +103,7 @@ const Privacy = () => {
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
               Privacy Policy
             </h1>
-            <p className="text-xl md:text-2xl text-amber-100 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-amber-200 max-w-2xl mx-auto font-medium">
               Your privacy is important to us. Learn how we protect and handle
               your information.
             </p>
@@ -114,21 +114,21 @@ const Privacy = () => {
       <div className="container mx-auto px-4 py-16">
         {/* Last Updated */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center space-x-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-semibold">
+          <div className="inline-flex items-center space-x-2 bg-amber-50 dark:bg-amber-900 text-amber-900 dark:text-amber-100 px-4 py-2 rounded-full text-sm font-semibold border border-amber-200 dark:border-amber-700">
             <MdSecurity />
             <span>Last updated: August 12, 2025</span>
           </div>
         </div>
 
         {/* Introduction */}
-        <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-8 shadow-lg border border-white/20 mb-12">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6">
+        <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
             Privacy{" "}
             <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
               Commitment
             </span>
           </h2>
-          <p className="text-gray-600 text-lg leading-relaxed">
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
             At Luxury Hotel, we are committed to protecting your privacy and
             ensuring the security of your personal information. This Privacy
             Policy explains how we collect, use, disclose, and safeguard your
@@ -143,13 +143,13 @@ const Privacy = () => {
           {sections.map((section, index) => (
             <div
               key={section.id}
-              className="bg-white/80 backdrop-blur-xl rounded-3xl p-8 shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300"
+              className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300"
             >
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl flex items-center justify-center mr-4">
                   <section.icon className="text-white text-xl" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                   {section.title}
                 </h3>
               </div>
@@ -158,7 +158,9 @@ const Privacy = () => {
                 {section.content.map((item, itemIndex) => (
                   <li key={itemIndex} className="flex items-start">
                     <div className="w-2 h-2 bg-amber-500 rounded-full mt-3 mr-4 flex-shrink-0"></div>
-                    <p className="text-gray-600 leading-relaxed">{item}</p>
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                      {item}
+                    </p>
                   </li>
                 ))}
               </ul>
@@ -172,7 +174,7 @@ const Privacy = () => {
             <FaEnvelope className="text-white text-2xl" />
           </div>
           <h2 className="text-3xl font-bold mb-4">Questions About Privacy?</h2>
-          <p className="text-xl text-amber-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-amber-50 mb-8 max-w-2xl mx-auto font-medium">
             If you have any questions about this Privacy Policy or our data
             practices, please don&apos;t hesitate to contact us.
           </p>
@@ -197,14 +199,14 @@ const Privacy = () => {
         </div>
 
         {/* Compliance Notice */}
-        <div className="mt-12 bg-blue-50 border border-blue-200 rounded-2xl p-6">
+        <div className="mt-12 bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 rounded-2xl p-6">
           <div className="flex items-start space-x-4">
-            <MdSecurity className="text-blue-600 text-2xl mt-1 flex-shrink-0" />
+            <MdSecurity className="text-blue-600 dark:text-blue-400 text-2xl mt-1 flex-shrink-0" />
             <div>
-              <h3 className="text-lg font-bold text-blue-900 mb-2">
+              <h3 className="text-lg font-bold text-blue-900 dark:text-blue-100 mb-2">
                 Compliance & Regulations
               </h3>
-              <p className="text-blue-800 leading-relaxed">
+              <p className="text-blue-800 dark:text-blue-200 leading-relaxed">
                 Our privacy practices comply with applicable data protection
                 laws including GDPR, CCPA, and other regional privacy
                 regulations. We regularly review and update our policies to

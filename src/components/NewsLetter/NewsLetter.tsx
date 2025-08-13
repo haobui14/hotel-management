@@ -13,13 +13,13 @@ const NewsLetter = () => {
 
         <form className="relative z-10 text-white px-6 md:px-12 flex flex-col justify-center items-center py-16 md:py-24">
           <div className="text-center mb-12">
-            <p className="text-lg md:text-xl font-medium mb-4 opacity-90">
+            <p className="text-lg md:text-xl font-bold mb-4 text-white">
               Stay Updated with Exclusive Offers
             </p>
-            <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-6 text-white">
               Join Our Newsletter
             </h2>
-            <p className="text-lg opacity-80 max-w-2xl mx-auto">
+            <p className="text-lg text-white/90 max-w-2xl mx-auto font-medium">
               Get the latest updates on special packages, seasonal offers, and
               luxury experiences delivered straight to your inbox.
             </p>
@@ -31,7 +31,7 @@ const NewsLetter = () => {
                 <input
                   type="email"
                   placeholder="Enter your email address"
-                  className="w-full h-14 md:h-16 rounded-2xl px-6 bg-white bg-opacity-20 backdrop-blur-sm border border-white border-opacity-30 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 transition-all duration-300"
+                  className="w-full h-14 md:h-16 rounded-2xl px-6 bg-white/25 backdrop-blur-sm border border-white/40 text-white placeholder-white/80 focus:outline-none focus:ring-2 focus:ring-white/60 transition-all duration-300 font-medium"
                 />
               </div>
               <button
@@ -42,7 +42,7 @@ const NewsLetter = () => {
               </button>
             </div>
 
-            <p className="text-sm opacity-70 text-center mt-4">
+            <p className="text-sm text-white/80 text-center mt-4 font-medium">
               No spam, unsubscribe at any time. We respect your privacy.
             </p>
           </div>

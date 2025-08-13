@@ -56,6 +56,30 @@
   @apply bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent;
 }
 
+.gradient-text-primary {
+  @apply bg-gradient-to-r from-primary to-emerald-600 bg-clip-text text-transparent;
+}
+
+.gradient-text-secondary {
+  @apply bg-gradient-to-r from-secondary to-amber-500 bg-clip-text text-transparent;
+}
+
+.gradient-bg-warm {
+  @apply bg-gradient-to-r from-amber-600 via-orange-600 to-red-500;
+}
+
+.gradient-bg-soft-warm {
+  @apply bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-100 dark:from-gray-900 dark:to-gray-800;
+}
+
+.gradient-bg-romantic {
+  @apply bg-gradient-to-r from-rose-500 to-pink-600;
+}
+
+.gradient-bg-primary {
+  @apply bg-gradient-to-r from-primary to-emerald-600;
+}
+
 .glass-effect {
   @apply bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-20;
 }

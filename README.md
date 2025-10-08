@@ -10,7 +10,7 @@
 
 ## 🚀 Live Demo
 
-**[View Live Demo →](https://main--hotel-management-next.netlify.app)**
+**[View Live Demo →](https://luxury-hotel-nextjs.netlify.app/)**
 
 Experience the full hotel management system with all features including room booking, user authentication, reviews, and more!
 

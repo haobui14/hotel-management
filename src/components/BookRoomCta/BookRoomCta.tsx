@@ -108,7 +108,7 @@ const BookRoomCta: FC<Props> = (props) => {
             </label>
             <DatePicker
               selected={checkinDate}
-              onChange={(date) => setCheckinDate(date)}
+              onChange={(date: Date | null) => setCheckinDate(date)}
               dateFormat="dd/MM/yyyy"
               minDate={new Date()}
               id="check-in-date"
@@ -126,7 +126,7 @@ const BookRoomCta: FC<Props> = (props) => {
             </label>
             <DatePicker
               selected={checkoutDate}
-              onChange={(date) => setCheckoutDate(date)}
+              onChange={(date: Date | null) => setCheckoutDate(date)}
               dateFormat="dd/MM/yyyy"
               disabled={!checkinDate}
               minDate={calcMinCheckoutDate() || undefined}

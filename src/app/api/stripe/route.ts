@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 import { getRoom } from "@/libs/apis";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-  apiVersion: "2024-04-10",
+  apiVersion: "2026-01-28.clover",
 });
 
 type RequestData = {

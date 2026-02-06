@@ -1,6 +1,26 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* Configure content paths for Tailwind */
+@source "../../**/*.{js,ts,jsx,tsx,mdx}";
+
+/* Theme configuration */
+@theme {
+  /* Custom colors */
+  --color-primary: #038c7f;
+  --color-secondary: #f2c641;
+  --color-tertiary-dark: #f27405;
+  --color-tertiary-light: #f2c641;
+
+  /* Font family */
+  --font-poppins: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+
+  /* Breakpoints (default breakpoints are already available) */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
 
 /* Custom utility classes */
 .img {
@@ -81,7 +101,7 @@
 }
 
 .glass-effect {
-  @apply bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-20;
+  @apply bg-white/10 backdrop-blur-lg border border-white/20;
 }
 
 .card-hover {

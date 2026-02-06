@@ -27,7 +27,7 @@ import axios from "axios";
 // Icon mapping for amenities
 const getAmenityIcon = (
   iconName: string,
-  size: "small" | "large" = "large"
+  size: "small" | "large" = "large",
 ) => {
   const iconSize = size === "small" ? "text-sm" : "text-lg";
   const iconMap: { [key: string]: React.ReactElement } = {
@@ -81,7 +81,7 @@ const getAmenityIcon = (
   if (
     iconName &&
     /[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/u.test(
-      iconName
+      iconName,
     )
   ) {
     return (
@@ -127,7 +127,7 @@ const RoomDetailsClient = ({ slug }: { slug: string }) => {
     isLoading: reviewsLoading,
   } = useSWR(
     room?._id ? `/api/room-reviews/${room._id}` : null,
-    fetchRoomReviews
+    fetchRoomReviews,
   );
 
   if (error) throw new Error("Cannot fetch data");
@@ -169,14 +169,11 @@ const RoomDetailsClient = ({ slug }: { slug: string }) => {
         hotelRoomSlug,
       });
 
-      if (stripe) {
-        const result = await stripe.redirectToCheckout({
-          sessionId: stripeSession.id,
-        });
-
-        if (result.error) {
-          toast.error("Payment Failed");
-        }
+      if (stripe && stripeSession.url) {
+        // Redirect to Stripe Checkout
+        window.location.href = stripeSession.url;
+      } else {
+        toast.error("Unable to redirect to payment");
       }
     } catch (error) {
       toast.error("An error occurred");
@@ -211,7 +208,7 @@ const RoomDetailsClient = ({ slug }: { slug: string }) => {
               <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-4">
                 {room.name}
               </h1>
-              <div className="w-24 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full"></div>
+              <div className="w-24 h-1 bg-linear-to-r from-amber-500 to-orange-500 rounded-full"></div>
             </div>
 
             {/* Amenities Cards */}
@@ -225,7 +222,7 @@ const RoomDetailsClient = ({ slug }: { slug: string }) => {
                     key={amenity._key}
                     className="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 group hover:-translate-y-1"
                   >
-                    <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 bg-linear-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
                       {getAmenityIcon(amenity.icon)}
                     </div>
                     <p className="text-sm md:text-base font-medium text-gray-700 dark:text-gray-300">
@@ -256,7 +253,7 @@ const RoomDetailsClient = ({ slug }: { slug: string }) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {room.offeredAmenities.map((amenity) => (
                     <div key={amenity._key} className="flex items-center group">
-                      <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-8 h-8 bg-linear-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
                         {getAmenityIcon(amenity.icon, "small")}
                       </div>
                       <p className="text-gray-700 dark:text-gray-300 font-medium">
@@ -276,7 +273,7 @@ const RoomDetailsClient = ({ slug }: { slug: string }) => {
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex items-center group">
-                    <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-8 h-8 bg-linear-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
                       <MdOutlineCleaningServices className="text-white" />
                     </div>
                     <p className="text-gray-700 dark:text-gray-300 font-medium">
@@ -284,7 +281,7 @@ const RoomDetailsClient = ({ slug }: { slug: string }) => {
                     </p>
                   </div>
                   <div className="flex items-center group">
-                    <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-rose-600 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-8 h-8 bg-linear-to-br from-red-500 to-rose-600 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
                       <LiaFireExtinguisherSolid className="text-white" />
                     </div>
                     <p className="text-gray-700 dark:text-gray-300 font-medium">
@@ -292,7 +289,7 @@ const RoomDetailsClient = ({ slug }: { slug: string }) => {
                     </p>
                   </div>
                   <div className="flex items-center group">
-                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-8 h-8 bg-linear-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
                       <AiOutlineMedicineBox className="text-white" />
                     </div>
                     <p className="text-gray-700 dark:text-gray-300 font-medium">
@@ -300,7 +297,7 @@ const RoomDetailsClient = ({ slug }: { slug: string }) => {
                     </p>
                   </div>
                   <div className="flex items-center group">
-                    <div className="w-8 h-8 bg-gradient-to-br from-gray-500 to-slate-600 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-8 h-8 bg-linear-to-br from-gray-500 to-slate-600 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
                       <GiSmokeBomb className="text-white" />
                     </div>
                     <p className="text-gray-700 dark:text-gray-300 font-medium">

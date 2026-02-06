@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Use class-based dark mode (replaces darkMode: 'class' from Tailwind v3 config) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Configure content paths for Tailwind */
 @source "../../**/*.{js,ts,jsx,tsx,mdx}";
 
@@ -32,11 +35,11 @@
 }
 
 .btn-primary {
-  @apply px-6 md:px-[50px] lg:px-[72px] py-2 md:py-5 bg-primary rounded-lg md:rounded-2xl shadow-sm shadow-primary text-white font-bold text-base md:text-xl hover:scale-110 duration-300 transition-all;
+  @apply px-6 md:px-12.5 lg:px-18 py-2 md:py-5 bg-primary rounded-lg md:rounded-2xl shadow-sm shadow-primary text-white font-bold text-base md:text-xl hover:scale-110 duration-300 transition-all;
 }
 
 .btn-tertiary {
-  @apply px-6 md:px-[50px] lg:px-[72px] py-2 md:py-5 bg-tertiary-light rounded-lg md:rounded-2xl shadow-sm shadow-tertiary-light text-white font-bold text-base md:text-xl hover:scale-110 duration-300 transition-all;
+  @apply px-6 md:px-12.5 lg:px-18 py-2 md:py-5 bg-tertiary-light rounded-lg md:rounded-2xl shadow-sm shadow-tertiary-light text-white font-bold text-base md:text-xl hover:scale-110 duration-300 transition-all;
 }
 
 .font-heading {
@@ -61,43 +64,43 @@
 
 /* Additional modern enhancements */
 .gradient-text-warm {
-  @apply bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent;
+  @apply bg-linear-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent;
 }
 
 .gradient-text-cool {
-  @apply bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent;
+  @apply bg-linear-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent;
 }
 
 .gradient-text-romantic {
-  @apply bg-gradient-to-r from-rose-600 to-pink-600 bg-clip-text text-transparent;
+  @apply bg-linear-to-r from-rose-600 to-pink-600 bg-clip-text text-transparent;
 }
 
 .gradient-text-royal {
-  @apply bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent;
+  @apply bg-linear-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent;
 }
 
 .gradient-text-primary {
-  @apply bg-gradient-to-r from-primary to-emerald-600 bg-clip-text text-transparent;
+  @apply bg-linear-to-r from-primary to-emerald-600 bg-clip-text text-transparent;
 }
 
 .gradient-text-secondary {
-  @apply bg-gradient-to-r from-secondary to-amber-500 bg-clip-text text-transparent;
+  @apply bg-linear-to-r from-secondary to-amber-500 bg-clip-text text-transparent;
 }
 
 .gradient-bg-warm {
-  @apply bg-gradient-to-r from-amber-600 via-orange-600 to-red-500;
+  @apply bg-linear-to-r from-amber-600 via-orange-600 to-red-500;
 }
 
 .gradient-bg-soft-warm {
-  @apply bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-100 dark:from-gray-900 dark:to-gray-800;
+  @apply bg-linear-to-br from-orange-50 via-amber-50 to-yellow-100 dark:from-gray-900 dark:to-gray-800;
 }
 
 .gradient-bg-romantic {
-  @apply bg-gradient-to-r from-rose-500 to-pink-600;
+  @apply bg-linear-to-r from-rose-500 to-pink-600;
 }
 
 .gradient-bg-primary {
-  @apply bg-gradient-to-r from-primary to-emerald-600;
+  @apply bg-linear-to-r from-primary to-emerald-600;
 }
 
 .glass-effect {
@@ -123,7 +126,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gradient-to-b from-amber-500 to-orange-600 rounded-full;
+  @apply bg-linear-to-b from-amber-500 to-orange-600 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {

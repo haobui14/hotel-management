@@ -60,6 +60,10 @@ const nextConfig = {
 
     return config;
   },
+  turbopack: {
+    // Enable Turbopack support in Next.js 16
+    // Custom webpack config is still used during build
+  },
 };
 
 export default nextConfig;
